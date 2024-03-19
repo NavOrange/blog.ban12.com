@@ -1,10 +1,10 @@
 ---
 title: '在 Vue CLI 愉快的配置 CDN'
-excerpt: '📝 搬砖积累下来的实用配置，持续更新哈！！！webpack externals cdn 依赖 package.json 自动获取版本生成链接 latest update: 2021-05-23'
+excerpt: '📝 搬砖积累下来的实用配置，持续更新哈！！！webpack externals cdn 依赖 package.json 自动获取版本生成链接'
 coverImage: 'https://cli.vuejs.org/cli-new-project.png'
 date: '2021-05-23T10:50:11.181Z'
 author:
-  name: Shuhua95
+  name: Coda
   picture: 'https://avatars.githubusercontent.com/u/23135654?v=4'
 ogImage:
   url: 'https://cli.vuejs.org/cli-new-project.png'
@@ -42,7 +42,7 @@ ogImage:
 
 ---
 
-## 我的实现(欢迎 [GitHub](https://github.com/Shuhua95/blog/issues) 交流学习哈 这个是地址可以直接提交 `issues` [https://github.com/Shuhua95/blog/issues](https://github.com/Shuhua95/blog/issues) 如果有错误请友好指出 🙏 感谢大佬！
+## 我的实现(欢迎 [GitHub](https://github.com/NavOrange/blog/issues) 交流学习哈 这个是地址可以直接提交 `issues` [https://github.com/NavOrange/blog/issues](https://github.com/NavOrange/blog/issues) 如果有错误请友好指出 🙏 感谢大佬！
 
 ---
 
@@ -58,7 +58,7 @@ const isProd = process.env.NODE_ENV === 'production' // 是否是生产环境
  * @params {string} packageName
  * @return {string} version
  */
-const getVersion = (dependencies => packageName => {
+const getVersion = ((dependencies) => (packageName) => {
   if (dependencies[packageName]) {
     // https://docs.npmjs.com/cli/v6/using-npm/semver#ranges
     return semver.minVersion(dependencies[packageName])
@@ -78,7 +78,7 @@ const genLinks = () => {
 
   return rels.reduce(
     (result, rel) =>
-      result.concat(hrefs.map(href => `<link href="${href}" rel="${rel}">`)),
+      result.concat(hrefs.map((href) => `<link href="${href}" rel="${rel}">`)),
     [],
   )
 }
@@ -120,8 +120,8 @@ module.exports = {
 
   chainWebpack(config) {
     // 添加 assets 到 html-webpack-plugin(题外话这个好像是使用的 ejs 的模版语法, 如有不对请告知)
-    config.when(isProd, config => {
-      config.plugin('html').tap(args => {
+    config.when(isProd, (config) => {
+      config.plugin('html').tap((args) => {
         args[0].cdn = assetsCDN
         args[0].info = `app-version: ${
           process.env.npm_package_version
@@ -140,7 +140,7 @@ module.exports = {
 ## `public/index.html`
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-info="<%= htmlWebpackPlugin.options.info %>">
   <head>
     <meta charset="utf-8" />

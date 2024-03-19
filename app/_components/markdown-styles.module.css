@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply break-words text-lg leading-relaxed;
 }
 
 .markdown p,
@@ -10,9 +10,17 @@
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply mb-4 mt-12 text-3xl leading-snug;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply mb-4 mt-8 text-2xl leading-snug;
+}
+
+.markdown a {
+  @apply text-orange-700;
+}
+
+.markdown :global(.hljs) {
+  @apply rounded-md border border-gray-300;
 }
