@@ -9,6 +9,10 @@
   @apply my-6;
 }
 
+.markdown h1 {
+  @apply mb-4 mt-16 text-4xl leading-snug;
+}
+
 .markdown h2 {
   @apply mb-4 mt-12 text-3xl leading-snug;
 }
@@ -23,4 +27,15 @@
 
 .markdown :global(.hljs) {
   @apply rounded-md border border-gray-300;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply ps-10;
+}
+.markdown ul {
+  @apply list-disc;
+}
+.markdown ol {
+  @apply list-decimal;
 }
